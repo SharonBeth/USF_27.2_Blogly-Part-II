@@ -1,0 +1,31 @@
+******************************************27.1.22-Blogly, SQLAlchemy Exercise**************************
+Took the following steps, the associated commands:
+
+1. Made a file location in WSL side for just this exercise.
+
+2. Was not sure if I needed to manually make the Database in PostGreSQL or if that would be done based on the app.py file.
+    Decided to skip it to see if it wuold work from the file, I can always come back and do this later if it does not.
+    
+3.  Set-Up the python version necessary based on all the necessary files?????
+    
+    Command order that I followed 
+    
+    A. In Ubuntu/high level folder (sharonfahler@DESKTOP-9R9UPU2:~/usf$), entered the following commands:
+        1. sudo apt update
+        2. sudo apt upgrade
+    B. In Ubuntu/specific file where app.py file will be & venv will be(sharonfahler@DESKTOP-9R9UPU2:~/usf/Unit-27_SQLAlchemy/27.1.22_SQLAlchemy_Exercise$)
+		1. 	sudo apt install python3.9-venv  (response from ubuntu below)
+				Reading package lists... Done
+				Building dependency tree... Done
+				Reading state information... Done
+				python3.9-venv is already the newest version (3.9.16-1+jammy1).
+				0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+		2.	sudo apt-get install postgresql  (response from Ubuntu below)
+				Reading package lists... Done
+				Building dependency tree... Done
+				Reading state information... Done
+				postgresql is already the newest version (14+238).
+				0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.	
+		2.	sudo apt install python3.9-venv (
+		2. 	
+		3. 	python3.9 -m venv venv

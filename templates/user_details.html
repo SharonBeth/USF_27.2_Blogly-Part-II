@@ -1,0 +1,52 @@
+{% extends 'index.html'  %}
+{% block title %}   User Detail Page   {% endblock %}
+
+{% block content %} 
+
+    <div class="container">
+            <div class="row">
+                
+                <div class="col-md-3">
+                    <span class="border border-primary">
+                    <img src="{{users.image_url}}" class="img-fluid" alt="Responsive image"></span>
+                    </span>
+                </div>
+                
+                
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>{{users.first_name}} {{users.last_name}}</h2>                                                                                 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="/edit_user/{{users.id}}">
+                                <button class="btn btn-primary btn-md">Edit</button>
+                            </a>
+                            <a href="/delete_user/{{users.id}}">
+                                <button class="btn btn-secondary btn-md">Delete</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Posts</h3>
+                            <ul>
+                                {% for post in posts %}
+                                <li><a href="/post_details/{{post.id}}"> {{post.title}}</a></li>
+                                {% endfor %}
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="/new_post/{{users.id}}">
+                                <button class="btn btn-secondary btn-lg">Add Post</button>
+                            </a>
+                        </div>
+                </div>
+            </div>
+    </div>
+{% endblock %}

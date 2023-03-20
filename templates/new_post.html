@@ -1,0 +1,23 @@
+{% extends 'index.html' %}  
+
+{% block title %} Add Post {% endblock %} 
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Add Post for {{user.first_name}} {{user.last_name}}</h1>
+            <form>
+                <p>Title</p>
+                <input type="text"  name="title">
+                <p>Content</p>
+                <input type="text" name="content">
+                <a href="/" class="btn btn-secondary btn-md">Cancel</a>
+                <button formaction="/new_post/{{user_id}}" formmethod="POST">Add</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'index.html' %}  
+
+{% block title %} Edit Post {% endblock %} 
+
+{% block content %} 
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Edit Post</h1>
+            <form action="/edit_post/{{post.id}}" method="POST">
+                <p>Title</p><br>
+                <input type="text"  name="title" placeholder="{{post.title}}">
+                <p>Content</p><br>
+                <input type="text" placeholder="{{post.content}}" name="content">
+                
+                <button>Add</button>
+            </form>
+
+{% endblock %}  

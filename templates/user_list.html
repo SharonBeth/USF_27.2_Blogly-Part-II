@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% block title %} Create a user {% endblock %}
+
+{% block content %}
+
+<body>
+    <div class="container">
+        <h1 id="title">Users</h1>
+        <ul>
+            {% for user in users %}
+            <li><a href="/user_details/{{user.id}}"> {{user.first_name}} {{user.last_name}}
+            </li>
+            {% endfor %}
+        </ul>
+        <a href=" /create_user">Create a User Account</a>
+    </div>
+
+    {% endblock %}
