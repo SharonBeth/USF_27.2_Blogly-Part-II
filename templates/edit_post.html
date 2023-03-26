@@ -1,19 +1,31 @@
-{% extends 'index.html' %}  
+{% extends 'index.html' %}
 
-{% block title %} Edit Post {% endblock %} 
+{% block title %} Edit Post {% endblock %}
 
-{% block content %} 
+{% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <h1>Edit Post</h1>
             <form action="/edit_post/{{post.id}}" method="POST">
                 <p>Title</p><br>
-                <input type="text"  name="title" placeholder="{{post.title}}">
+                <input type="text" name="title" placeholder="{{post.title}}">
                 <p>Content</p><br>
                 <input type="text" placeholder="{{post.content}}" name="content">
-                
-                <button>Add</button>
+                <a href="/" class="btn btn-secondary btn-md">Cancel</a>
+                <button type="submit" class="btn btn-success">Edit</button>
+            
+        </div>
+        <div class="form-check form-group row">
+            {% for tag in tags %}
+            <div>
+                <input class="form-input" type="checkbox" value="{{ tag.id }}" id="tag_{{ tag.id }}" name="tags">
+                <label class="form-check-label" for="tag_{{ tag.id }}">
+                    {{tag.name}}
+                </label>
+            </div>
+            {% endfor %}
             </form>
+        </div>
 
-{% endblock %}  
+        {% endblock %}

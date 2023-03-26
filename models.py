@@ -39,7 +39,7 @@ class User(db.Model):
     image_url   = db.Column(db.String,
                             nullable=True)
     
-    postings = db.relationship('Post', backref ='user')
+    postings = db.relationship('Post', backref ='user', cascade="all, delete-orphan")
 
 class Post(db.Model):
     """Posts"""
@@ -51,7 +51,7 @@ class Post(db.Model):
         return f"<User id={p.id} title={p.title} content={p.content} DateTime={p.created_at} user_id={p.user_id}>"
     
     id          = db.Column(db.Integer,
-                             primary_key=True,
+                            primary_key=True,
                             autoincrement=True)
     title       = db.Column(db.String,
                             nullable=True)
@@ -60,7 +60,45 @@ class Post(db.Model):
     created_at  = db.Column(db.DateTime,
                             nullable=False, default=datetime.utcnow)
     user_id     = db.Column(db.Integer,
-                            db.ForeignKey('users.id'))
+                            db.ForeignKey('users.id'), nullable=False)
                             
     # userid    = db.relationship('User', backref='ids')
- 
+     
+class PostTag(db.Model):
+    """Joining table of Post Model & Tag Model"""
+
+    __tablename__ = 'posts_tags'
+
+    def __repr__(self):
+        pt = self
+        return f"<Post ID={pt.post_id} Tag ID={pt.tag_id}>"
+    
+    post_id     = db.Column(db.Integer,
+                            db.ForeignKey('posts.id'),
+                            primary_key=True,
+                            )
+    tag_id      = db.Column(db.Integer,
+                            db.ForeignKey('tags.id'),
+                            primary_key=True)
+
+class Tag(db.Model):
+    """Tag Id's"""
+
+    __tablename__ = 'tags'
+
+    def __repr__(self):
+        t=self
+        return f"<Tag id={t.id} Tag Name={t.name}>"
+    
+    id          = db.Column(db.Integer,
+                            primary_key=True,
+                            )
+    name        = db.Column(db.String,
+                            nullable=True)
+    
+    posts       = db.relationship('Post',
+                                    secondary="posts_tags",
+                                    backref="tags")
+    
+
+    

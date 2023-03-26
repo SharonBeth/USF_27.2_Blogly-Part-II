@@ -19,16 +19,28 @@
             </div>
         </div>
         <div class="row">
-            <a href="/">
-                <button class="btn btn-primary btn-lg">Cancel</button>
-            </a>
-            <a href="/edit_post/{{post.id}}">
-                <button class="btn btn-secondary btn-lg">Edit</button>
-            </a>
-            <a href="/delete_post/{{post.id}}">
-                <button class="btn btn-third btn-lg">Delete</button>
-            </a>
+            <div class="col-md-12">
+                Tags:
+                {% if post.tags %}
+
+                {% for tag in post.tags %}
+                <a href="/tags/{{tag.id}}"><i class="badge badge-primary"></i>{{tag.name}}</i></a>
+                {% endfor %}
+                </p>
+                {% endif %}
+            </div>
         </div>
+
+
+        <form>
+            <button class="btn btn-primary btn-lg" formmethod="GET" formaction="/user_details/{{post.user_id}}"> Cancel
+            </button>
+            <button class="btn btn-secondary btn-lg" formmethod="GET" formaction="/edit_post/{{post.id}}"> Edit
+            </button>
+            <button class="btn btn-third btn-lg" formmethod="POST" formaction="/delete_post/{{post.id}}"> Delete
+            </button>
     </div>
+    </form>
+</div>
 </div>
 {% endblock %}

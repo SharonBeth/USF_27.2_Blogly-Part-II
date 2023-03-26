@@ -1,6 +1,6 @@
-{% extends 'index.html' %}  
+{% extends 'index.html' %}
 
-{% block title %} Add Post {% endblock %} 
+{% block title %} Add Post {% endblock %}
 
 {% block content %}
 
@@ -10,14 +10,23 @@
             <h1>Add Post for {{user.first_name}} {{user.last_name}}</h1>
             <form>
                 <p>Title</p>
-                <input type="text"  name="title">
+                <input type="text" name="title">
                 <p>Content</p>
                 <input type="text" name="content">
                 <a href="/" class="btn btn-secondary btn-md">Cancel</a>
-                <button formaction="/new_post/{{user_id}}" formmethod="POST">Add</button>
-            </form>
-            
         </div>
+        <div class="form-check form-group row">
+            {% for tag in tags %}
+            <div>
+                <input class="form-input" type="checkbox" value="{{ tag.id }}" id="tag_{{ tag.id }}" name="tags">
+                <label class="form-check-label" for="tag_{{ tag.id }}">
+                    {{tag.name}}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+        <button formaction="/new_post/{{user_id}}" formmethod="POST">Add</button>
+        </form>
     </div>
 </div>
 {% endblock %}

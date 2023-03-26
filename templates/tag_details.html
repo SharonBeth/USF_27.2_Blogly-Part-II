@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block title %} Tag Details Page {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> Tag: {{tag.name}}</h1>
+            <ul>
+                {% for post in tag.posts %}
+                <li><a href="/posts/{{post.id}}"><i class="badge badge-primary"></i>{{post.title}}</i></a></li>
+                {% endfor %}
+        </div>
+    </div>
+    <form>
+        <button formmethod="GET" formaction="/tags/{{tag.id}}/edit" class="btn btn-primary">Edit</button>
+        <button formmethod="POST" formaction="/tags/{{tag.id}}/delete" class="btn btn-primary">Delete</button>
+    </form>
+</div>
+</div>
+{% endblock %}
